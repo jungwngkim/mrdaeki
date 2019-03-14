@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mr.Daeki</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <h1><a href="index.html">Mr.Daeki</a></h1>
+    <!--<img src="mrdaeki.jpg" width="100px"><br>
+    <p> Most Reputable Digital Archive of Exceptional KMLA Images, 팀 <strong>MrDaeki</strong> 입니다. </p>
+    Mr.Daeki 페이스북 페이지 <a href="https://www.facebook.com/mrdaeki/" target="_blank" title="Mr.Daeki 페이스북 페이지">https://www.facebook.com/mrdaeki/</a>-->
+    <!--<h2>목록</h2>-->
+    <div id="grid">
+      <ol>
+        <li><a onclick="
+          fetch('recent').then(function(response){
+            response.text().then(function(text){
+              document.querySelector('article').innerHTML = text;
+            })
+          })
+        ">최근 행사</a></li>
+        <li><a onclick="
+          fetch('whole').then(function(response){
+            response.text().then(function(text){
+              document.querySelector('article').innerHTML = text;
+            })
+          })
+        ">전체 행사</a></li>
+        <li><a onclick="
+          fetch('kmla').then(function(response){
+            response.text().then(function(text){
+              document.querySelector('article').innerHTML = text;
+            })
+          })
+        ">잡다한 민사고 사진</a></li>
+      </ol>
+      <div id="paragraph">
+        <h2>Mr.Daeki</h2>
+        <p> Mr.Daeki는 Most Reputable Digital Archive of Exceptional KMLA Images의 약자로, 각종 민사고 행사들의 사진을 공유하기 위하여 시작한 프로젝트입니다. 민사고 학생 누구나 사진을 찍어서 공유할 수 있고, 민사고 학생 누구나 사진을 사용할 수 있습니다.</p>
+        <h2>관리자</h2>
+        <p>21기 조성현 23기 김원웅 23기 김범준 24기 김정웅</p>
+      </div>
+    </div>
+    <article>
+      
+    </article>
+  </body>
+</html>
