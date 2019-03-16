@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="style.css">
   </head>
+    
   <body>
     <h1><a href="index.html">Mr.Daeki</a></h1>
     <!--<img src="mrdaeki.jpg" width="100px"><br>
@@ -12,29 +13,10 @@
     Mr.Daeki 페이스북 페이지 <a href="https://www.facebook.com/mrdaeki/" target="_blank" title="Mr.Daeki 페이스북 페이지">https://www.facebook.com/mrdaeki/</a>-->
     <!--<h2>목록</h2>-->
     <div id="grid">
-      <ol>
-        <li><a class="pointer" onclick="
-          fetch('recent').then(function(response){
-            response.text().then(function(text){
-              document.querySelector('article').innerHTML = text;
-            })
-          })
-        ">최근 행사</a></li>
-        <li><a class="pointer" onclick="
-          fetch('whole').then(function(response){
-            response.text().then(function(text){
-              document.querySelector('article').innerHTML = text;
-            })
-          })
-        ">전체 행사</a></li>
-        <li><a class="pointer" onclick="
-          fetch('kmla').then(function(response){
-            response.text().then(function(text){
-              document.querySelector('article').innerHTML = text;
-            })
-          })
-        ">잡다한 민사고 사진</a></li>
+      <ol id="listofPages">
+        
       </ol>
+        
       <div id="paragraph">
         <h2>Mr.Daeki</h2>
         <p> Mr.Daeki는 Most Reputable Digital Archive of Exceptional KMLA Images의 약자로, 각종 민사고 행사들의 사진을 공유하기 위하여 시작한 프로젝트입니다. 민사고 학생 누구나 사진을 찍어서 공유할 수 있고, 민사고 학생 누구나 사진을 사용할 수 있습니다.</p>
@@ -42,8 +24,34 @@
         <p>21기 조성현 23기 김원웅 23기 김범준 24기 김정웅</p>
       </div>
     </div>
+      
     <article>
 
     </article>
+    <script>
+      function fetchPage(name){
+        fetch(name).then(function(response){
+          response.text().then(function(text){
+            document.querySelector('article').innerHTML = text;
+          })
+        })
+      }
+      if(location.hash){
+        fetchPage(location.hash.substr(2));
+      }
+      fetch('list').then(function(response){
+        response.text().then(function(text){
+          var items = text.split(',');
+          var i = 0;
+          var tags = '';
+          while(i<items.length){
+              var item = items[i];
+              var tag = '<li><a href="#!'+item+'" class="pointer" onclick="fetchPage(\''+item+'\')">'+item+'</a></li>';
+              tags += tag;
+              i += 1;
+          } document.querySelector('#listofPages').innerHTML = tags;
+        })
+      })
+    </script>
   </body>
 </html>
